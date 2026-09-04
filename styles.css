@@ -36,3 +36,15 @@
 @media(max-width:700px){.planes.stack-deck{display:block;padding:0 0 72px}.planes.stack-deck .plane-card{position:sticky;top:calc(118px + var(--stack-index)*7px);z-index:calc(20 + var(--stack-layer));margin-bottom:24px;transform-origin:top center;scale:calc(1 - var(--stack-depth,0)*.012);filter:saturate(calc(1 - var(--stack-depth,0)*.055)) brightness(calc(1 - var(--stack-depth,0)*.018));box-shadow:0 14px 34px rgba(34,43,84,.13);transition:scale .35s cubic-bezier(.2,.75,.25,1),filter .35s ease,box-shadow .35s ease}.planes.stack-deck .plane-card.is-under{box-shadow:0 7px 20px rgba(34,43,84,.1)}.planes.stack-deck .plane-card.is-stack-active{box-shadow:0 22px 48px rgba(34,43,84,.19)}.planes.stack-deck .plane-card.is-stack-active .target-icon img{animation:stack-icon-pop .55s cubic-bezier(.2,.8,.25,1)}@keyframes stack-icon-pop{0%{transform:scale(.9)}55%{transform:scale(1.08)}100%{transform:scale(1)}}}
 @media(max-width:390px){.planes.stack-deck .plane-card{top:calc(112px + var(--stack-index)*6px);margin-bottom:20px}}
 @media(prefers-reduced-motion:reduce){.planes.stack-deck .plane-card{scale:1!important;filter:none!important;transition:none!important}.planes.stack-deck .plane-card.is-stack-active .target-icon img{animation:none!important}}
+
+/* Reliable mobile stack: keep the scrolling viewport as the sticky container. */
+@supports (overflow:clip){body{overflow-x:clip}}
+@supports not (overflow:clip){html{overflow-x:hidden}body{overflow-x:visible}}
+@media(max-width:700px){
+  .section .planes{--stack-base:118px;--stack-step:7px;display:block;padding-bottom:clamp(150px,28vh,240px);overflow:visible;isolation:isolate}
+  .section .planes .plane-card{position:sticky;top:calc(var(--stack-base) + var(--stack-index,0)*var(--stack-step));z-index:calc(20 + var(--stack-layer,1));margin-bottom:24px;opacity:1!important;translate:none!important;transform:none!important;scale:none!important;filter:none!important;box-shadow:0 14px 34px rgba(34,43,84,.13);transition:border-color .3s ease,box-shadow .35s cubic-bezier(.2,.75,.25,1),opacity .3s ease}
+  .section .planes .plane-card.is-under{opacity:.9!important;border-color:rgba(111,124,227,.2);box-shadow:0 6px 18px rgba(34,43,84,.09)}
+  .section .planes .plane-card.is-stack-active{opacity:1!important;border-color:rgba(41,169,120,.34);box-shadow:0 22px 48px rgba(34,43,84,.2)}
+}
+@media(max-width:390px){.section .planes{--stack-base:112px;--stack-step:6px}.section .planes .plane-card{margin-bottom:20px}}
+@media(prefers-reduced-motion:reduce){.section .planes .plane-card{transition:none!important}.section .planes .plane-card.is-under{opacity:1!important}}
