@@ -25,13 +25,20 @@
         <p class="lede">Un moteur souverain et explicable qui produit des faits techniques, mesure sa couverture et sait s’abstenir. Il assiste l’analyste — il ne décide jamais d’un crédit.</p>
         <div class="hero-actions"><a class="button primary" href="#pipeline">Explorer le pipeline <span>↓</span></a><a class="button ghost" href="#catalogue">Voir les outils</a></div>
       </div>
-      <div class="hero-visual" aria-label="Synthèse des principes du moteur">
-        <div class="orbit"></div>
-        <div class="core"><svg><use href="#shield"/></svg><strong>Policy</strong><span>déterministe</span></div>
-        <div class="satellite s1"><svg><use href="#document"/></svg><span>Original</span></div>
-        <div class="satellite s2"><svg><use href="#search"/></svg><span>Faits</span></div>
-        <div class="satellite s3"><svg><use href="#user"/></svg><span>Humain</span></div>
-        <div class="satellite s4"><svg><use href="#lock"/></svg><span>Local</span></div>
+      <div class="hero-visual" aria-label="Du document reçu à la revue humaine">
+        <div class="source-document">
+          <div class="pdf-badge">PDF</div><div><strong>Demande.pdf</strong><span>1,2 Mo · 8 pages</span></div>
+          <div class="fake-copy"><i></i><i></i><i class="mint"></i><i></i><i class="short"></i><i class="mint long"></i></div>
+          <small><svg><use href="#shield"/></svg> Document reçu</small>
+        </div>
+        <div class="scan-gate"><div class="scan-line"></div><span><svg><use href="#shield"/></svg> Analyse locale</span></div>
+        <div class="mini-flow">
+          <article><svg><use href="#document"/></svg><strong>Original</strong><div class="micro-lines"></div><small>Preuve d’origine</small></article>
+          <article><svg><use href="#search"/></svg><strong>Faits</strong><div class="micro-list"><i></i><i></i><i></i></div><small>Faits extraits</small></article>
+          <article><svg><use href="#lock"/></svg><strong>Local</strong><div class="micro-lines"></div><small>Contexte local</small></article>
+        </div>
+        <div class="policy-node"><svg><use href="#shield"/></svg><strong>Policy</strong><span>déterministe</span></div>
+        <div class="human-node"><svg><use href="#user"/></svg><strong>Humain</strong><span>Revue par l’analyste</span></div>
       </div>
       <div class="metrics">
         <article><strong>15 MiB</strong><span>limite d’entrée par défaut</span></article>
@@ -43,7 +50,20 @@
 
     <section class="section wrap" id="pipeline">
       <div class="section-head"><div><p class="eyebrow">01 · Flux exécuté aujourd’hui</p><h2>Le pipeline réel, étape par étape</h2></div><p>Cliquez sur une étape pour comprendre son rôle, sa sortie et son comportement prudent.</p></div>
-      <div class="pipeline" id="pipelineList"></div>
+      <div class="pipeline" id="pipelineList">
+        <article class="pipeline-group ingestion"><header><svg><use href="#shield"/></svg> Ingestion sûre</header><div class="group-steps">
+          <button class="pipe-step" data-step="0"><span class="num">01</span><span class="stage-visual"><svg><use href="#document"/></svg></span><strong>Réception</strong><span>React · FastAPI</span></button>
+          <button class="pipe-step" data-step="1"><span class="num">02</span><span class="stage-visual"><svg><use href="#cpu"/></svg></span><strong>Contrôle</strong><span>MIME · magic bytes</span></button>
+        </div></article>
+        <article class="pipeline-group proofing"><header><svg><use href="#shield"/></svg> Preuve &amp; orchestration</header><div class="group-steps">
+          <button class="pipe-step" data-step="2"><span class="num">03</span><span class="stage-visual"><svg><use href="#fingerprint"/></svg></span><strong>Preuve</strong><span>Original · SHA-256</span></button>
+          <button class="pipe-step" data-step="3"><span class="num">04</span><span class="stage-visual"><svg><use href="#database"/></svg></span><strong>Orchestration</strong><span>SQLite · asyncio.Queue</span></button>
+        </div></article>
+        <article class="pipeline-group review"><header><svg><use href="#shield"/></svg> Analyse &amp; revue</header><div class="decision-border">Frontière<br>de décision</div><div class="group-steps">
+          <button class="pipe-step" data-step="4"><span class="num">05</span><span class="stage-visual"><svg><use href="#search"/></svg></span><strong>Détection</strong><span>pypdf · pyHanko · PDFium</span></button>
+          <button class="pipe-step" data-step="5"><span class="num">06</span><span class="stage-visual human"><svg><use href="#user"/></svg></span><strong>Décision</strong><span>Policy · humain</span></button>
+        </div></article>
+      </div>
       <aside class="detail-panel" id="pipelineDetail" aria-live="polite"></aside>
     </section>
 

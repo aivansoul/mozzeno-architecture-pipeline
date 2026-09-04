@@ -36,10 +36,9 @@ const proofs=[
   ['N0','Fichier envoyé','Octets reçus + hash','faible'],['N1','Partage d’écran','Continuité visuelle mesurée','observée'],['N2','Co-navigation','DOM et événements contrôlés','instrumentée'],['N3','Navigateur géré','Origine, réseau et téléchargement','renforcée'],['N4','Connecteur officiel','Réponse d’un flux authentifié','forte'],['N5','Attestation signée','Artefact lié à l’émetteur','positive']
 ];
 const statusClass=s=>({'Livré':'delivered','Partiel':'partial','Cible':'target','Expérimental':'experimental','Gate':'gate','Préparé':'prepared'}[s]);
-const pipeEl=document.querySelector('#pipelineList');
 const detailEl=document.querySelector('#pipelineDetail');
 function showPipeline(i){document.querySelectorAll('.pipe-step').forEach((el,n)=>el.classList.toggle('active',n===i));const p=pipeline[i];detailEl.innerHTML=`<div class="detail-icon"><svg><use href="#${p.icon}"/></svg></div><div><strong>${String(i+1).padStart(2,'0')} · ${p.title}</strong><p>${p.text}</p></div><small>${p.limit}</small>`;}
-pipeline.forEach((p,i)=>{const b=document.createElement('button');b.className='pipe-step';b.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><strong>${p.title}</strong><span>${p.sub}</span>`;b.addEventListener('click',()=>showPipeline(i));pipeEl.append(b)});showPipeline(0);
+document.querySelectorAll('.pipe-step').forEach((button,i)=>button.addEventListener('click',()=>showPipeline(i)));showPipeline(0);
 const statuses=['Tous','Livré','Partiel','Préparé','Cible','Expérimental','Gate'];let active='Tous';
 const filterEl=document.querySelector('#filters');
 statuses.forEach(s=>{const b=document.createElement('button');b.className='filter'+(s==='Tous'?' active':'');b.textContent=s;b.addEventListener('click',()=>{active=s;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));renderTools()});filterEl.append(b)});
