@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vue interactive de l’architecture Mozzeno Document Trust.">
+  <title>Mozzeno Document Trust — Architecture</title>
+  <link rel="icon" href="assets/mozzeno-logo.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Retour en haut"><img src="assets/mozzeno-logo.svg" alt="Mozzeno"><span>Document Trust</span></a>
+    <nav aria-label="Navigation principale">
+      <a href="#pipeline">Pipeline</a><a href="#catalogue">Outils</a><a href="#target">Cible</a><a href="#proof">Preuve</a>
+    </nav>
+    <div class="version"><span></span> État audité · 04.09.2026</div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Architecture technique · moteur v1.2.1</p>
+        <h1>De l’octet reçu à la<br><em>revue humaine.</em></h1>
+        <p class="lede">Un moteur souverain et explicable qui produit des faits techniques, mesure sa couverture et sait s’abstenir. Il assiste l’analyste — il ne décide jamais d’un crédit.</p>
+        <div class="hero-actions"><a class="button primary" href="#pipeline">Explorer le pipeline <span>↓</span></a><a class="button ghost" href="#catalogue">Voir les outils</a></div>
+      </div>
+      <div class="hero-visual" aria-label="Synthèse des principes du moteur">
+        <div class="orbit"></div>
+        <div class="core"><svg><use href="#shield"/></svg><strong>Policy</strong><span>déterministe</span></div>
+        <div class="satellite s1"><svg><use href="#document"/></svg><span>Original</span></div>
+        <div class="satellite s2"><svg><use href="#search"/></svg><span>Faits</span></div>
+        <div class="satellite s3"><svg><use href="#user"/></svg><span>Humain</span></div>
+        <div class="satellite s4"><svg><use href="#lock"/></svg><span>Local</span></div>
+      </div>
+      <div class="metrics">
+        <article><strong>15 MiB</strong><span>limite d’entrée par défaut</span></article>
+        <article><strong>5 formats</strong><span>PDF, PNG, JPEG, TIFF, WebP</span></article>
+        <article><strong>0 egress</strong><span>analyse locale sans appel réseau</span></article>
+        <article><strong>100%</strong><span>des décisions sensibles revues</span></article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="pipeline">
+      <div class="section-head"><div><p class="eyebrow">01 · Flux exécuté aujourd’hui</p><h2>Le pipeline réel, étape par étape</h2></div><p>Cliquez sur une étape pour comprendre son rôle, sa sortie et son comportement prudent.</p></div>
+      <div class="pipeline" id="pipelineList"></div>
+      <aside class="detail-panel" id="pipelineDetail" aria-live="polite"></aside>
+    </section>
+
+    <section class="section soft" id="catalogue"><div class="wrap">
+      <div class="section-head"><div><p class="eyebrow">02 · Catalogue technique</p><h2>Les briques, sans zone grise</h2></div><p>Chaque outil est présenté avec sa fonction réelle et sa limite. Aucun statut ne vaut certification de production.</p></div>
+      <div class="toolbar">
+        <label class="search"><svg><use href="#search"/></svg><input id="toolSearch" type="search" placeholder="Rechercher un outil, une fonction…" autocomplete="off"></label>
+        <div class="filters" id="filters" aria-label="Filtrer par statut"></div>
+      </div>
+      <p class="result-count" id="resultCount"></p>
+      <div class="tool-grid" id="toolGrid"></div>
+    </div></section>
+
+    <section class="section wrap" id="target">
+      <div class="section-head"><div><p class="eyebrow">03 · Architecture cible</p><h2>Six plans, une séparation nette</h2></div><p>Le passage en production repose d’abord sur l’isolation, la gouvernance et la preuve — pas sur l’ajout d’un score opaque.</p></div>
+      <div class="planes">
+        <article><i>01</i><svg><use href="#key"/></svg><h3>Plan d’accès</h3><p>OIDC, autorisation objet, quota, consentement.</p><span>Identité minimale</span></article>
+        <article><i>02</i><svg><use href="#fingerprint"/></svg><h3>Plan de preuve</h3><p>Original, hash, dérivés, provenance, custody.</p><span>Objets chiffrés</span></article>
+        <article><i>03</i><svg><use href="#cpu"/></svg><h3>Plan de calcul</h3><p>Parsers et détecteurs isolés, sans egress.</p><span>Entrée hostile</span></article>
+        <article><i>04</i><svg><use href="#database"/></svg><h3>Plan de connaissance</h3><p>Référentiels, templates, règles et versions.</p><span>Sources approuvées</span></article>
+        <article><i>05</i><svg><use href="#scales"/></svg><h3>Plan de décision</h3><p>Policy déterministe et revue humaine.</p><span>Faits structurés</span></article>
+        <article><i>06</i><svg><use href="#activity"/></svg><h3>Plan d’observabilité</h3><p>Santé, latence, erreurs, dérive, couverture.</p><span>Zéro document</span></article>
+      </div>
+      <div class="roadmap">
+        <div class="roadmap-head"><h3>Trajectoire recommandée</h3><span>La sécurité précède l’augmentation de couverture</span></div>
+        <div class="roadmap-row"><b>P0</b><div><strong>Déployable en sécurité</strong><p>IAM · quarantaine · sandbox · queue durable · PostgreSQL · stockage objet · purge</p></div><span class="status gate">GATE</span></div>
+        <div class="roadmap-row"><b>P1</b><div><strong>Couverture documentaire</strong><p>OCR local · OpenCV · comparaison texte/rendu · templates émetteurs</p></div><span class="status target">CIBLE</span></div>
+        <div class="roadmap-row"><b>P2</b><div><strong>Preuves positives</strong><p>eIDAS · C2PA · connecteurs institutionnels · scellement émetteur</p></div><span class="status target">CIBLE</span></div>
+        <div class="roadmap-row"><b>P3</b><div><strong>Modèles calibrés</strong><p>Uniquement après corpus autorisé, protocole d’évaluation et supervision</p></div><span class="status experimental">EXPÉRIMENTAL</span></div>
+      </div>
+    </section>
+
+    <section class="section dark" id="proof"><div class="wrap">
+      <div class="section-head inverse"><div><p class="eyebrow">04 · Provenance et navigation guidée</p><h2>Une échelle de preuve,<br>pas une promesse binaire.</h2></div><p>La vidéo améliore la continuité observée, mais seule une source authentifiée ou une attestation signée apporte une preuve forte d’origine.</p></div>
+      <div class="proof-ladder" id="proofLadder"></div>
+      <div class="callout"><svg><use href="#alert"/></svg><div><strong>Principe non négociable</strong><p>L’agent IA peut guider, orchestrer et expliquer. Il ne fabrique aucun résultat manquant, n’interprète jamais une page comme une instruction et ne modifie pas la policy.</p></div></div>
+    </div></section>
+
+    <section class="section wrap limits">
+      <div><p class="eyebrow">05 · Lecture responsable</p><h2>Ce que le système dit.<br><em>Et ce qu’il ne dit pas.</em></h2></div>
+      <div class="do-dont"><article class="do"><span><svg><use href="#check"/></svg> Le système peut</span><ul><li>Conserver et vérifier les octets originaux</li><li>Localiser des faits et anomalies techniques</li><li>Afficher couverture, limites et abstention</li><li>Organiser une revue humaine traçable</li></ul></article><article class="dont"><span><svg><use href="#close"/></svg> Le système ne peut pas</span><ul><li>Certifier seul l’authenticité d’un document</li><li>Déduire la solvabilité ou refuser un crédit</li><li>Transformer l’absence d’anomalie en preuve</li><li>Utiliser un pourcentage d’authenticité non calibré</li></ul></article></div>
+    </section>
+  </main>
+  <footer><div class="wrap"><img src="assets/mozzeno-logo.svg" alt="Mozzeno"><p>Document Trust · aperçu d’architecture basé sur l’état audité du 4 septembre 2026.</p><a href="#top">Retour en haut ↑</a></div></footer>
+
+  <svg class="symbols" aria-hidden="true"><defs>
+    <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.8 2.8 8.2 7 10 4.2-1.8 7-5.2 7-10V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="document" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l2 2M14 9l2 2"/></symbol>
+    <symbol id="fingerprint" viewBox="0 0 24 24"><path d="M7 12a5 5 0 0 1 10 0c0 4-1 7-3 9M4 12a8 8 0 0 1 16 0M10 12c0 5-1 7-2 8M13 12c0 3-.4 5-1 7"/></symbol>
+    <symbol id="cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4M10 10h4v4h-4z"/></symbol>
+    <symbol id="database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/></symbol>
+    <symbol id="scales" viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M4 7l-3 6h6L4 7zm16 0-3 6h6l-3-6zM8 21h8"/></symbol>
+    <symbol id="activity" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></symbol>
+    <symbol id="alert" viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4zM12 9v4M12 17h.01"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  </defs></svg>
+  <script src="app.js"></script>
+</body>
+</html>
