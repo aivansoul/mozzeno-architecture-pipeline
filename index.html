@@ -66,12 +66,12 @@
     <section class="section wrap" id="target">
       <div class="section-head"><div><p class="eyebrow">03 · Architecture cible</p><h2>Six plans, une séparation nette</h2></div><p>Le passage en production repose d’abord sur l’isolation, la gouvernance et la preuve — pas sur l’ajout d’un score opaque.</p></div>
       <div class="planes">
-        <article><i>01</i><svg><use href="#key"/></svg><h3>Plan d’accès</h3><p>OIDC, autorisation objet, quota, consentement.</p><span>Identité minimale</span></article>
-        <article><i>02</i><svg><use href="#fingerprint"/></svg><h3>Plan de preuve</h3><p>Original, hash, dérivés, provenance, custody.</p><span>Objets chiffrés</span></article>
-        <article><i>03</i><svg><use href="#cpu"/></svg><h3>Plan de calcul</h3><p>Parsers et détecteurs isolés, sans egress.</p><span>Entrée hostile</span></article>
-        <article><i>04</i><svg><use href="#database"/></svg><h3>Plan de connaissance</h3><p>Référentiels, templates, règles et versions.</p><span>Sources approuvées</span></article>
-        <article><i>05</i><svg><use href="#scales"/></svg><h3>Plan de décision</h3><p>Policy déterministe et revue humaine.</p><span>Faits structurés</span></article>
-        <article><i>06</i><svg><use href="#activity"/></svg><h3>Plan d’observabilité</h3><p>Santé, latence, erreurs, dérive, couverture.</p><span>Zéro document</span></article>
+        <article class="plane-card access-card"><i>01</i><div class="target-icon dark"><svg><use href="#target-access"/></svg></div><div class="plane-copy"><h3>Plan d’accès</h3><p>OIDC, autorisation objet, quota, consentement.</p><span>Identité minimale</span></div></article>
+        <article class="plane-card proof-card"><i>02</i><div class="target-icon lavender"><svg><use href="#fingerprint"/></svg></div><div class="plane-copy"><h3>Plan de preuve</h3><p>Original, hash, dérivés,<br>provenance, custody.</p><span>Objets chiffrés</span></div></article>
+        <article class="plane-card compute-card"><i>03</i><div class="target-icon mint"><svg><use href="#cpu"/></svg></div><div class="plane-copy"><h3>Plan de calcul</h3><p>Parsers et détecteurs isolés,<br>sans egress.</p><span>Entrée hostile</span></div></article>
+        <article class="plane-card knowledge-card"><i>04</i><div class="target-icon lavender database-icon"><svg><use href="#database"/></svg></div><div class="plane-copy"><h3>Plan de connaissance</h3><p>Référentiels, templates,<br>règles et versions.</p><span>Sources approuvées</span></div></article>
+        <article class="plane-card decision-card"><i>05</i><div class="target-icon mint decision-icon"><svg><use href="#scales"/></svg><b><svg><use href="#check"/></svg></b></div><div class="plane-copy"><h3>Plan de décision</h3><p>Policy déterministe et<br>revue humaine.</p><span>Faits structurés</span></div></article>
+        <article class="plane-card observability-card"><i>06</i><div class="target-icon dark"><svg><use href="#activity"/></svg></div><div class="plane-copy"><h3>Plan d’observabilité</h3><p>Santé, latence, erreurs,<br>dérive, couverture.</p><span>Zéro document</span></div><div class="observability-chart" aria-hidden="true"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path class="area" d="M0 120C35 116 52 88 86 88s40 2 62-33c22-35 50-7 75-31 20-19 42-20 77-19V120Z"/><path class="line" d="M0 120C35 116 52 88 86 88s40 2 62-33c22-35 50-7 75-31 20-19 42-20 77-19"/></svg></div></article>
       </div>
       <div class="roadmap">
         <div class="roadmap-head"><h3>Trajectoire recommandée</h3><span>La sécurité précède l’augmentation de couverture</span></div>
@@ -107,6 +107,7 @@
     <symbol id="database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/></symbol>
     <symbol id="scales" viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M4 7l-3 6h6L4 7zm16 0-3 6h6l-3-6zM8 21h8"/></symbol>
     <symbol id="activity" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></symbol>
+    <symbol id="target-access" viewBox="0 0 24 24"><path d="M12 2.8 4.8 6v5.2c0 4.7 2.8 8.2 7.2 10 4.4-1.8 7.2-5.3 7.2-10V6z"/><circle cx="12" cy="10.5" r="2.2"/><path d="M12 12.7v3.8"/></symbol>
     <symbol id="alert" viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4zM12 9v4M12 17h.01"/></symbol>
     <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
     <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
