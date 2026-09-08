@@ -48,3 +48,145 @@
 }
 @media(max-width:390px){.section .planes{--stack-base:112px;--stack-step:6px}.section .planes .plane-card{margin-bottom:20px}}
 @media(prefers-reduced-motion:reduce){.section .planes .plane-card{transition:none!important}.section .planes .plane-card.is-under{opacity:1!important}}
+
+/* Audited capability and multilayer sections. */
+.capability-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.capability-card{display:flex;min-height:255px;flex-direction:column;padding:23px;background:#fff;border:1px solid rgba(34,43,84,.11);border-radius:15px;box-shadow:0 10px 28px rgba(34,43,84,.05);transition:border-color .22s ease,box-shadow .22s ease,transform .22s ease}
+.capability-card:hover{border-color:rgba(41,169,120,.3);box-shadow:0 18px 42px rgba(34,43,84,.1);transform:translateY(-3px)}
+.capability-card.critical-limit{background:linear-gradient(145deg,#fff 35%,var(--red-soft));border-color:rgba(181,70,85,.24)}
+.capability-card header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:30px;color:var(--muted);font-size:.64rem;letter-spacing:.07em;text-transform:uppercase}
+.capability-card h3{margin:0 0 11px;font-size:1rem;letter-spacing:-.02em}
+.capability-card p{margin:0;color:var(--muted);font-size:.77rem;line-height:1.62}
+.capability-card small{margin-top:auto;padding-top:20px;color:var(--amber);font-size:.68rem;line-height:1.55}
+.critical-limit small{color:var(--red)}
+.truth-banner{display:flex;align-items:flex-start;gap:17px;margin-top:18px;padding:22px 24px;color:var(--navy);background:var(--mint-soft);border:1px solid rgba(41,169,120,.25);border-radius:14px}
+.truth-banner>svg{width:24px;height:24px;flex:0 0 auto;color:var(--mint-dark)}
+.truth-banner strong{font-size:.83rem}
+.truth-banner p{margin:6px 0 0;color:var(--muted);font-size:.73rem;line-height:1.6}
+.multilayer-banner{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:center;margin-bottom:38px;padding:25px 28px;color:#fff;background:linear-gradient(125deg,var(--navy-deep),var(--navy));border:1px solid rgba(111,124,227,.38);border-radius:16px;box-shadow:0 18px 45px rgba(34,43,84,.15)}
+.multilayer-banner div span{display:block;margin-bottom:10px;color:var(--mint);font-size:.64rem;font-weight:850;letter-spacing:.1em}
+.multilayer-banner div strong{font-size:1.02rem;line-height:1.45}
+.multilayer-banner ul{margin:0;padding-left:20px;color:#c5c9d9;font-size:.72rem;line-height:1.65}
+.multilayer-banner li+li{margin-top:6px}
+.layer-intro{display:flex;align-items:end;justify-content:space-between;gap:30px;margin:0 0 20px}
+.layer-intro .eyebrow{margin:0}
+.layer-intro h3{max-width:420px;margin:0;font-size:1.18rem;letter-spacing:-.025em;text-align:right}
+.planes .plane-card>i{min-width:48px;padding-inline:7px;font-size:.92rem;white-space:nowrap}
+
+@media(max-width:900px){
+  .capability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .multilayer-banner{grid-template-columns:1fr}
+}
+
+@media(max-width:700px){
+  .section{padding-block:2rem}
+  .capability-grid{grid-template-columns:1fr;gap:11px}
+  .capability-card{min-height:0;padding:19px}
+  .capability-card header{margin-bottom:20px}
+  .capability-card small{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+  .truth-banner{padding:18px}
+  .multilayer-banner{gap:18px;margin-bottom:28px;padding:21px 19px}
+  .layer-intro{display:block;margin-bottom:16px}
+  .layer-intro h3{margin-top:9px;text-align:left}
+  .planes .plane-card>i{min-width:38px;padding-inline:5px;font-size:.72rem}
+}
+
+@media(hover:none){
+  .capability-card:hover{transform:none}
+  .capability-card:active{transform:scale(.985)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .capability-card{transition:none!important}
+}
+
+/* M1.4 — interactive, evidence-led fraud coverage map. */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.fraud-section{position:relative;overflow:hidden;border-block:1px solid rgba(34,43,84,.06)}
+.fraud-section:before{position:absolute;top:-240px;right:-220px;width:620px;height:620px;content:"";border:1px solid rgba(41,169,120,.23);border-radius:50%;box-shadow:inset 0 0 0 74px rgba(107,217,168,.035);pointer-events:none}
+.fraud-heading{position:relative;z-index:1}
+.fraud-heading h2{max-width:690px}
+.fraud-principle{position:relative;display:grid;grid-template-columns:74px 1fr auto;gap:22px;align-items:center;margin-bottom:16px;padding:20px 22px;background:linear-gradient(125deg,#fff 30%,rgba(107,217,168,.12));border:1px solid rgba(41,169,120,.25);border-radius:16px;box-shadow:0 16px 40px rgba(34,43,84,.06);overflow:hidden}
+.fraud-principle:after{position:absolute;right:-42px;bottom:-74px;width:210px;height:180px;content:"";background:radial-gradient(circle,rgba(41,169,120,.38) 1.15px,transparent 1.65px);background-size:11px 11px;opacity:.35;transform:rotate(-16deg)}
+.fraud-principle-icon{position:relative;z-index:1;display:grid;width:74px;height:74px;place-items:center;background:var(--mint-soft);border-radius:17px}
+.fraud-principle-icon img{width:78%;height:78%;object-fit:contain;filter:drop-shadow(0 7px 10px rgba(34,43,84,.12))}
+.fraud-principle>div:nth-child(2){position:relative;z-index:1}
+.fraud-principle span{display:block;margin-bottom:5px;color:var(--mint-dark);font-size:.61rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
+.fraud-principle strong{font-size:.94rem;line-height:1.35}
+.fraud-principle p{margin:6px 0 0;color:var(--muted);font-size:.73rem;line-height:1.55}
+.fraud-principle>a{position:relative;z-index:1;display:flex;align-items:center;gap:12px;padding:11px 14px;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:9px;font-size:.65rem;font-weight:800;white-space:nowrap}
+.fraud-principle>a span{display:inline;margin:0;font-size:.8rem}
+.fraud-summary{position:relative;z-index:1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.fraud-summary-card{grid-column:span 2;min-height:126px;padding:17px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 8px 25px rgba(34,43,84,.035)}
+.fraud-summary-card.total{grid-column:span 4;color:#fff;background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-color:transparent}
+.fraud-summary-card strong{display:block;font-size:1.75rem;letter-spacing:-.06em}
+.fraud-summary-card span{display:block;margin-top:5px;font-size:.68rem;font-weight:850}
+.fraud-summary-card small{display:block;margin-top:13px;color:var(--muted);font-size:.59rem;line-height:1.45}
+.fraud-summary-card.total small{color:#c2c6d8}.fraud-summary-card.active{border-top:3px solid var(--mint-dark)}.fraud-summary-card.partial{border-top:3px solid #d88b2d}.fraud-summary-card.missing{border-top:3px solid var(--red)}.fraud-summary-card.external{border-top:3px solid var(--purple)}
+.fraud-toolbar{position:relative;z-index:3;display:grid;grid-template-columns:minmax(260px,1.45fr) repeat(3,minmax(145px,.72fr)) auto;gap:9px;align-items:end;padding:13px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 32px rgba(34,43,84,.055);backdrop-filter:blur(14px)}
+.fraud-toolbar label{display:grid;gap:6px;color:var(--muted);font-size:.58rem;font-weight:800;letter-spacing:.045em;text-transform:uppercase}
+.fraud-toolbar select,.fraud-search{min-width:0;height:44px;color:var(--navy);background:var(--surface);border:1px solid transparent;border-radius:9px;outline:0}
+.fraud-toolbar select{width:100%;padding:0 34px 0 11px;font:inherit;font-size:.67rem;font-weight:750;text-transform:none;cursor:pointer}
+.fraud-toolbar select:focus-visible,.fraud-search:focus-within{border-color:var(--purple);box-shadow:0 0 0 3px rgba(111,124,227,.13)}
+.fraud-search{display:flex;align-items:center;margin-top:18px;padding-inline:12px}
+.fraud-search svg{flex:0 0 auto;width:17px;height:17px;color:var(--purple)}
+.fraud-search input{width:100%;min-width:0;padding:0 9px;color:var(--navy);background:transparent;border:0;outline:0;font-size:.74rem}
+.fraud-search input::placeholder{color:#8a90a5}
+.fraud-reset{height:44px;padding:0 13px;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:9px;font-size:.65rem;font-weight:800;cursor:pointer}
+.fraud-reset:hover{color:#fff;background:var(--navy);border-color:var(--navy)}
+.fraud-results-line{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:18px 2px 10px;color:var(--muted)}
+.fraud-results-line p{margin:0;font-size:.68rem}
+.fraud-results-line button{padding:5px 0;color:var(--navy);background:none;border:0;border-bottom:1px solid var(--line);font-size:.63rem;font-weight:800;cursor:pointer}
+.fraud-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:11px;align-items:start}
+.fraud-card{--rx:0deg;--ry:0deg;--mx:50%;--my:50%;position:relative;grid-column:span 4;background:#fff;border:1px solid var(--line);border-top:3px solid var(--status-color,var(--purple));border-radius:14px;box-shadow:0 10px 28px rgba(34,43,84,.045);overflow:hidden;transition:border-color .22s ease,box-shadow .25s ease,transform .24s cubic-bezier(.2,.75,.25,1)}
+.fraud-card.coverage-active{--status-color:var(--mint-dark);--status-soft:var(--mint-soft)}.fraud-card.coverage-partial{--status-color:#d88b2d;--status-soft:var(--amber-soft)}.fraud-card.coverage-missing{--status-color:var(--red);--status-soft:var(--red-soft)}.fraud-card.coverage-external{--status-color:var(--purple);--status-soft:var(--purple-soft)}
+.fraud-card:before{position:absolute;inset:0;content:"";background:radial-gradient(280px circle at var(--mx) var(--my),color-mix(in srgb,var(--status-color) 12%,transparent),transparent 66%);opacity:0;pointer-events:none;transition:opacity .22s ease}
+.fraud-card[open]{grid-column:span 6;box-shadow:0 20px 44px rgba(34,43,84,.1)}
+.fraud-card summary{position:relative;z-index:1;display:grid;grid-template-columns:54px 1fr auto 22px;gap:12px;align-items:center;min-height:128px;padding:16px;list-style:none;cursor:pointer}
+.fraud-card summary::-webkit-details-marker{display:none}
+.fraud-card summary:focus-visible{outline:3px solid rgba(111,124,227,.35);outline-offset:-3px;border-radius:11px}
+.fraud-card-icon{display:grid;width:54px;height:54px;place-items:center;background:var(--status-soft);border-radius:13px}
+.fraud-card-icon img{width:78%;height:78%;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(34,43,84,.1));transition:transform .24s ease}
+.fraud-card-title{min-width:0}.fraud-card-title small{display:block;margin-bottom:7px;color:var(--muted);font-size:.53rem;font-weight:800;letter-spacing:.055em;text-transform:uppercase}.fraud-card-title strong{display:block;font-size:.78rem;line-height:1.35}
+.fraud-card-meta{display:grid;justify-items:end;gap:8px}.fraud-card-meta i{color:var(--muted);font-size:.55rem;font-style:normal;font-weight:850}
+.coverage-badge{display:inline-flex;padding:5px 7px;border-radius:99px;font-size:.5rem;font-weight:900;letter-spacing:.045em;white-space:nowrap}.coverage-badge.active{color:#167a58;background:var(--mint-soft)}.coverage-badge.partial{color:#975c14;background:var(--amber-soft)}.coverage-badge.missing{color:var(--red);background:var(--red-soft)}.coverage-badge.external{color:#5864c5;background:var(--purple-soft)}
+.fraud-chevron{display:grid;width:22px;height:22px;place-items:center;color:var(--status-color);font-size:.9rem;transition:transform .25s ease}
+.fraud-card[open] .fraud-chevron{transform:rotate(45deg)}
+.fraud-card[open] summary{border-bottom:1px solid var(--line)}
+.fraud-detail{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:13px;animation:fraud-detail-open .28s cubic-bezier(.2,.75,.25,1)}
+.fraud-detail>div{padding:13px;background:var(--surface);border-radius:10px}
+.fraud-detail>div span{display:block;margin-bottom:7px;color:var(--muted);font-size:.53rem;font-weight:900;letter-spacing:.055em;text-transform:uppercase}
+.fraud-detail>div p{margin:0;color:var(--ink);font-size:.68rem;line-height:1.55}
+.fraud-detail .fraud-now{background:var(--mint-soft)}.fraud-detail .fraud-gap{background:var(--red-soft)}.fraud-detail .fraud-next{background:var(--purple-soft)}
+.fraud-detail .fraud-now span{color:#167a58}.fraud-detail .fraud-gap span{color:var(--red)}.fraud-detail .fraud-next span{color:#5864c5}
+.fraud-detail footer{grid-column:1/-1;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:12px 3px 2px;background:none;border:0}
+.fraud-detail footer>b{flex:0 0 auto;padding:5px 7px;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:7px;font-size:.54rem}
+.fraud-detail footer>div{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.fraud-detail footer a{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:.52rem;font-weight:750;text-align:right}
+.fraud-detail footer a:hover{color:var(--purple)}.fraud-detail footer a span{color:var(--mint-dark)}
+@keyframes fraud-detail-open{from{opacity:0;translate:0 -8px}to{opacity:1;translate:0 0}}
+.fraud-empty{display:grid;min-height:220px;place-items:center;align-content:center;gap:12px;color:var(--muted);background:#fff;border:1px dashed rgba(34,43,84,.2);border-radius:14px;text-align:center}.fraud-empty svg{width:28px;height:28px;color:var(--purple)}.fraud-empty strong{font-size:.8rem}.fraud-empty button{padding:9px 12px;color:#fff;background:var(--navy);border:0;border-radius:8px;font-size:.65rem;font-weight:800;cursor:pointer}
+.fraud-legend{display:grid;grid-template-columns:.7fr 1.3fr;gap:44px;align-items:start;margin-top:18px;padding:24px;background:#fff;border:1px solid var(--line);border-radius:15px}.fraud-legend h3{margin:0;font-size:1.15rem;letter-spacing:-.03em}.fraud-legend ul{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:0;padding:0;list-style:none}.fraud-legend li{display:grid;grid-template-columns:10px 1fr;gap:2px 9px;align-items:center}.fraud-legend li strong{font-size:.68rem}.fraud-legend li small{grid-column:2;color:var(--muted);font-size:.59rem;line-height:1.45}.coverage-dot{width:9px;height:9px;background:currentColor;border-radius:50%;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 13%,transparent)}.coverage-dot.active{color:var(--mint-dark)}.coverage-dot.partial{color:#d88b2d}.coverage-dot.missing{color:var(--red)}.coverage-dot.external{color:var(--purple)}
+.fraud-sources{display:grid;grid-template-columns:.72fr 1.28fr;gap:45px;margin-top:12px;padding:25px;color:#fff;background:var(--navy-deep);border-radius:15px}.fraud-sources h3{margin:0;font-size:1.05rem}.fraud-sources>div>p:last-child{margin:12px 0 0;color:#b9bed2;font-size:.68rem;line-height:1.58}.fraud-sources #fraudSources{display:grid;grid-template-columns:1fr 1fr;gap:7px}.fraud-sources a{position:relative;display:grid;grid-template-columns:1fr auto;gap:4px 8px;padding:10px 12px;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:9px;transition:background .2s ease,border-color .2s ease}.fraud-sources a:hover{background:rgba(107,217,168,.1);border-color:rgba(107,217,168,.34)}.fraud-sources a span{grid-column:1;color:var(--mint);font-size:.49rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase}.fraud-sources a strong{grid-column:1;font-size:.59rem;line-height:1.35}.fraud-sources a i{grid-column:2;grid-row:1/3;align-self:center;color:var(--mint);font-size:.7rem;font-style:normal}.noscript-note{padding:14px;color:var(--red);background:var(--red-soft);border-radius:10px;font-size:.72rem}
+
+@media(hover:hover) and (pointer:fine){
+  .fraud-card{transform:perspective(850px) rotateX(var(--rx)) rotateY(var(--ry))}
+  .fraud-card:hover{border-color:color-mix(in srgb,var(--status-color) 48%,transparent);box-shadow:0 20px 45px rgba(34,43,84,.11);transform:perspective(850px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-3px)}
+  .fraud-card:hover:before{opacity:1}.fraud-card:hover .fraud-card-icon img{transform:scale(1.07)}
+}
+
+@media(max-width:1050px){
+  .fraud-toolbar{grid-template-columns:1.4fr repeat(2,1fr)}.fraud-toolbar label:nth-of-type(4){grid-column:2}.fraud-reset{grid-column:3}.fraud-card{grid-column:span 6}.fraud-card[open]{grid-column:span 12}
+}
+
+@media(max-width:700px){
+  .fraud-section:before{top:-145px;right:-285px;width:520px;height:520px}.fraud-principle{grid-template-columns:58px 1fr;gap:14px;padding:16px}.fraud-principle-icon{width:58px;height:58px;border-radius:13px}.fraud-principle>a{grid-column:1/-1;justify-content:center;min-height:42px}.fraud-summary{grid-template-columns:1fr 1fr;gap:8px}.fraud-summary-card,.fraud-summary-card.total{grid-column:span 1;min-height:116px;padding:15px}.fraud-summary-card.total{grid-column:1/-1;min-height:104px}.fraud-summary-card strong{font-size:1.45rem}.fraud-summary-card small{margin-top:9px}.fraud-toolbar{grid-template-columns:1fr 1fr;padding:10px}.fraud-toolbar .fraud-search{grid-column:1/-1;margin-top:0}.fraud-toolbar label:nth-of-type(4){grid-column:auto}.fraud-reset{grid-column:1/-1}.fraud-results-line{margin-top:15px}.fraud-grid{display:block}.fraud-card,.fraud-card[open]{margin-bottom:9px}.fraud-card summary{grid-template-columns:46px 1fr 20px;gap:10px;min-height:112px;padding:14px}.fraud-card-icon{width:46px;height:46px}.fraud-card-meta{grid-column:2;grid-row:2;display:flex;align-items:center;justify-content:flex-start}.fraud-chevron{grid-column:3;grid-row:1/3}.fraud-card-title small{margin-bottom:5px}.fraud-detail{grid-template-columns:1fr;padding:10px}.fraud-detail footer{display:grid}.fraud-detail footer>div{justify-content:flex-start}.fraud-detail footer a{text-align:left}.fraud-legend,.fraud-sources{grid-template-columns:1fr;gap:22px;padding:19px}.fraud-legend ul{grid-template-columns:1fr}.fraud-sources #fraudSources{grid-template-columns:1fr}.motion-ready .fraud-card.reveal{translate:0 18px}.motion-ready .fraud-card.reveal:nth-child(even){translate:0 24px}.motion-ready .fraud-card.reveal.is-visible{translate:0 0}
+}
+
+@media(max-width:390px){
+  .fraud-toolbar{grid-template-columns:1fr}.fraud-toolbar .fraud-search,.fraud-reset,.fraud-toolbar label:nth-of-type(4){grid-column:1}.fraud-summary-card{min-height:126px}.fraud-card summary{grid-template-columns:42px 1fr 18px;padding:13px 11px}.fraud-card-icon{width:42px;height:42px}.coverage-badge{font-size:.46rem}.fraud-detail>div{padding:11px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .fraud-card,.fraud-card:before,.fraud-card-icon img,.fraud-chevron,.fraud-sources a{transition:none!important}.fraud-detail{animation:none!important}
+}

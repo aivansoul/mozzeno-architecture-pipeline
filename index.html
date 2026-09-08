@@ -3,42 +3,75 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Vue interactive de l’architecture Mozzeno Document Trust.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; connect-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <meta name="description" content="Carte interactive des fraudes documentaires, couverture réelle et architecture multilayer auditée de Mozzeno Document Trust M1.4.">
+  <meta name="theme-color" content="#222b54">
   <title>Mozzeno Document Trust — Architecture</title>
   <link rel="icon" href="assets/mozzeno-logo.svg">
-  <link rel="stylesheet" href="styles.css?v=20260904-2">
+  <link rel="stylesheet" href="styles.css?v=20260908-1">
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#top" aria-label="Retour en haut"><img src="assets/mozzeno-logo.svg" alt="Mozzeno"><span>Document Trust</span></a>
     <nav aria-label="Navigation principale">
-      <a href="#pipeline">Pipeline</a><a href="#catalogue">Outils</a><a href="#target">Cible</a><a href="#proof">Preuve</a>
+      <a href="#coverage">Fraudes</a><a href="#pipeline">Pipeline</a><a href="#catalogue">Outils</a><a href="#target">Multilayer</a><a href="#proof">Preuve</a>
     </nav>
-    <div class="version"><span></span> État audité · 04.09.2026</div>
+    <div class="version"><span></span> État audité · 08.09.2026</div>
   </header>
 
   <main id="top">
     <section class="hero wrap">
       <div class="hero-copy">
-        <p class="eyebrow">Architecture technique · moteur v1.2.1</p>
+        <p class="eyebrow">Architecture technique · M1.4 · policy v1.5</p>
         <h1>De l’octet reçu à la<br><em>revue humaine.</em></h1>
-        <p class="lede">Un moteur souverain et explicable qui produit des faits techniques, mesure sa couverture et sait s’abstenir. Il assiste l’analyste — il ne décide jamais d’un crédit.</p>
-        <div class="hero-actions"><a class="button primary" href="#pipeline">Explorer le pipeline <span>↓</span></a><a class="button ghost" href="#catalogue">Voir les outils</a></div>
+        <p class="lede">Une assistance multilayer qui part des dangers, combine des familles de preuve indépendantes et sait s’abstenir. Elle signale des faits compatibles avec une modification — jamais une fraude confirmée à elle seule.</p>
+        <div class="hero-actions"><a class="button primary" href="#coverage">Cartographier les risques <span>↓</span></a><a class="button ghost" href="#pipeline">Explorer le pipeline</a></div>
       </div>
       <div class="hero-visual" aria-label="Du document reçu à la revue humaine">
         <img src="assets/architecture-hero.png" alt="Un document traverse une analyse locale, puis les contrôles Original, Faits et Local, avant une policy déterministe et une revue humaine.">
         <div class="hero-flow-caption" aria-hidden="true"><span>Analyse locale</span><span>Original</span><span>Faits</span><span>Local</span><span>Policy</span><span>Humain</span></div>
       </div>
       <div class="metrics">
-        <article><strong>15 MiB</strong><span>limite d’entrée par défaut</span></article>
+        <article><strong>15 MiB</strong><span>limite d’entrée effective</span></article>
         <article><strong>5 formats</strong><span>PDF, PNG, JPEG, TIFF, WebP</span></article>
-        <article><strong>0 egress</strong><span>analyse locale sans appel réseau</span></article>
-        <article><strong>100%</strong><span>des décisions sensibles revues</span></article>
+        <article><strong>2 familles</strong><span>minimum pour un HIGH_RISK</span></article>
+        <article><strong>168 tests</strong><span>backend · 66 frontend</span></article>
       </div>
     </section>
 
+    <section class="section soft fraud-section" id="coverage"><div class="wrap">
+      <div class="section-head fraud-heading"><div><p class="eyebrow">01 · Menaces actuelles et couverture réelle</p><h2>La carte des fraudes documentaires.</h2></div><p>Une taxonomie vivante des manipulations connues. Chaque fiche distingue la trace recherchée, le contrôle réellement actif, l’angle mort et la prochaine couche à construire.</p></div>
+      <div class="fraud-principle" data-reveal>
+        <div class="fraud-principle-icon"><img src="assets/icon-decision.png" alt=""></div>
+        <div><span>Règle de lecture</span><strong>« Contrôle actif » ne signifie jamais « document authentique ».</strong><p>Le moteur observe des faits reproductibles, expose sa couverture et s’abstient lorsque la preuve manque. La fraude et la décision crédit restent humaines.</p></div>
+        <a href="#fraudLegend">Comprendre les statuts <span>↓</span></a>
+      </div>
+      <div class="fraud-summary" id="fraudSummary" aria-label="Résumé de la couverture"></div>
+      <div class="fraud-toolbar" aria-label="Filtres de la carte des fraudes">
+        <label class="fraud-search"><svg><use href="#search"/></svg><span class="sr-only">Rechercher</span><input id="fraudSearch" type="search" placeholder="Rechercher : GPT, signature, IBAN…" autocomplete="off"></label>
+        <label><span>Famille</span><select id="fraudFamily"><option value="all">Toutes les familles</option></select></label>
+        <label><span>Couverture</span><select id="fraudStatus"><option value="all">Tous les statuts</option></select></label>
+        <label><span>Canal</span><select id="fraudChannel"><option value="all">Tous les canaux</option></select></label>
+        <button class="fraud-reset" id="fraudReset" type="button">Réinitialiser</button>
+      </div>
+      <div class="fraud-results-line"><p id="fraudResultCount" aria-live="polite"></p><button id="fraudCollapseAll" type="button">Tout refermer</button></div>
+      <div class="fraud-grid" id="fraudGrid"></div>
+      <div class="fraud-empty" id="fraudEmpty" hidden><svg><use href="#search"/></svg><strong>Aucun scénario ne correspond à ces filtres.</strong><button type="button">Réinitialiser la recherche</button></div>
+      <div class="fraud-legend" id="fraudLegend" data-reveal>
+        <div><p class="eyebrow">Légende de décision</p><h3>Une couverture graduée, jamais binaire.</h3></div>
+        <ul>
+          <li><span class="coverage-dot active"></span><strong>Actif ciblé</strong><small>La trace précise est contrôlée localement sur données synthétiques.</small></li>
+          <li><span class="coverage-dot partial"></span><strong>Partiel</strong><small>Une partie des variantes est visible ; un contournement reste possible.</small></li>
+          <li><span class="coverage-dot missing"></span><strong>À ajouter</strong><small>Aucun contrôle fiable n’est encore branché sur cette fraude.</small></li>
+          <li><span class="coverage-dot external"></span><strong>Source externe</strong><small>Le fichier seul ne peut pas répondre ; identité, émetteur ou portail sont requis.</small></li>
+        </ul>
+      </div>
+      <div class="fraud-sources" data-reveal><div><p class="eyebrow">Références de cadrage</p><h3>La taxonomie est versionnée et reliée à des sources.</h3><p>Les statuts de couverture viennent de l’audit du code M1.4. Les sources externes cadrent les menaces et rappellent les limites de la provenance, des signatures et de la détection automatisée.</p></div><div id="fraudSources"></div></div>
+      <noscript><p class="noscript-note">JavaScript doit être activé pour filtrer et ouvrir la matrice interactive.</p></noscript>
+    </div></section>
+
     <section class="section wrap" id="pipeline">
-      <div class="section-head"><div><p class="eyebrow">01 · Flux exécuté aujourd’hui</p><h2>Le pipeline réel, étape par étape</h2></div><p>Cliquez sur une étape pour comprendre son rôle, sa sortie et son comportement prudent.</p></div>
+      <div class="section-head"><div><p class="eyebrow">02 · Flux exécuté aujourd’hui</p><h2>Le pipeline réel, étape par étape</h2></div><p>Cliquez sur une étape pour comprendre son rôle, sa sortie et son comportement prudent.</p></div>
       <div class="pipeline" id="pipelineList">
         <div class="mobile-scroll-hint" aria-hidden="true">Balayez pour parcourir les 6 étapes <span>→</span></div>
         <img src="assets/architecture-pipeline.png" alt="Six étapes reliées : réception, contrôle, preuve, orchestration, détection et décision humaine.">
@@ -47,15 +80,15 @@
           <button class="pipe-step" data-step="1"><span>02</span><strong>Contrôle</strong><small>MIME · magic bytes</small></button>
           <button class="pipe-step" data-step="2"><span>03</span><strong>Preuve</strong><small>Original · SHA-256</small></button>
           <button class="pipe-step" data-step="3"><span>04</span><strong>Orchestration</strong><small>SQLite · asyncio.Queue</small></button>
-          <button class="pipe-step" data-step="4"><span>05</span><strong>Détection</strong><small>pypdf · pyHanko · PDFium</small></button>
+          <button class="pipe-step" data-step="4"><span>05</span><strong>Détection</strong><small>pypdf · pyHanko · C2PA</small></button>
           <button class="pipe-step" data-step="5"><span>06</span><strong>Décision</strong><small>Policy · humain</small></button>
         </div>
       </div>
       <aside class="detail-panel" id="pipelineDetail" aria-live="polite"></aside>
     </section>
 
-    <section class="section soft" id="catalogue"><div class="wrap">
-      <div class="section-head"><div><p class="eyebrow">02 · Catalogue technique</p><h2>Les briques, dans l’ordre du flux</h2></div><p>Les outils suivent le parcours réel d’une soumission, du socle d’exécution à la revue, puis les briques de déploiement et d’évolution.</p></div>
+    <section class="section" id="catalogue"><div class="wrap">
+      <div class="section-head"><div><p class="eyebrow">03 · Catalogue technique</p><h2>Les briques, dans l’ordre du flux</h2></div><p>Chaque outil a une fonction bornée, une limite visible et un statut : livré, préparé, cible ou expérimental.</p></div>
       <div class="toolbar">
         <label class="search"><svg><use href="#search"/></svg><input id="toolSearch" type="search" placeholder="Rechercher un outil, une fonction…" autocomplete="off"></label>
         <div class="filters" id="filters" aria-label="Filtrer par statut"></div>
@@ -65,36 +98,41 @@
     </div></section>
 
     <section class="section wrap" id="target">
-      <div class="section-head"><div><p class="eyebrow">03 · Architecture cible</p><h2>Six plans, une séparation nette</h2></div><p>Le passage en production repose d’abord sur l’isolation, la gouvernance et la preuve — pas sur l’ajout d’un score opaque.</p></div>
+      <div class="section-head"><div><p class="eyebrow">04 · Architecture multilayer</p><h2>Dix couches. Aucune preuve unique.</h2></div><p>On part de chaque mode de falsification, puis on combine les représentations capables d’en observer des traces et un contrôle compensatoire.</p></div>
+      <div class="multilayer-banner" data-reveal>
+        <div><span>POLICY v1.5</span><strong>Deux détecteurs ACTIVE + deux familles admissibles pour HIGH_RISK.</strong></div>
+        <ul><li>Les trois analyses pypdf restent une seule famille PDF_NATIVE.</li><li>Un résultat SHADOW est auditable mais ne ferme aucune couverture.</li><li>Couche obligatoire absente ou attaque hors domaine : INCONCLUSIVE.</li></ul>
+      </div>
+      <div class="layer-intro"><p class="eyebrow">L0 → L9 · regroupées en six plans opérationnels</p><h3>Chaque couche répond à un angle mort différent.</h3></div>
       <div class="planes">
-        <article class="plane-card access-card"><i>01</i><div class="target-icon mint-tile"><img src="assets/icon-access.png" alt=""></div><div class="plane-copy"><h3>Plan d’accès</h3><p>OIDC, autorisation objet, quota, consentement.</p><span>Identité minimale</span></div></article>
-        <article class="plane-card proof-card"><i>02</i><div class="target-icon lavender"><img src="assets/icon-proof.png" alt=""></div><div class="plane-copy"><h3>Plan de preuve</h3><p>Original, hash, dérivés,<br>provenance, custody.</p><span>Objets chiffrés</span></div></article>
-        <article class="plane-card compute-card"><i>03</i><div class="target-icon mint"><img src="assets/icon-compute.png" alt=""></div><div class="plane-copy"><h3>Plan de calcul</h3><p>Parsers et détecteurs isolés,<br>sans egress.</p><span>Entrée hostile</span></div></article>
-        <article class="plane-card knowledge-card"><i>04</i><div class="target-icon lavender"><img src="assets/icon-knowledge.png" alt=""></div><div class="plane-copy"><h3>Plan de connaissance</h3><p>Référentiels, templates,<br>règles et versions.</p><span>Sources approuvées</span></div></article>
-        <article class="plane-card decision-card"><i>05</i><div class="target-icon mint"><img src="assets/icon-decision.png" alt=""></div><div class="plane-copy"><h3>Plan de décision</h3><p>Policy déterministe et<br>revue humaine.</p><span>Faits structurés</span></div></article>
-        <article class="plane-card observability-card"><i>06</i><div class="target-icon mint"><img src="assets/icon-observability.png" alt=""></div><div class="plane-copy"><h3>Plan d’observabilité</h3><p>Santé, latence, erreurs,<br>dérive, couverture.</p><span>Zéro document</span></div><div class="observability-chart" aria-hidden="true"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path class="area" d="M0 120C35 116 52 88 86 88s40 2 62-33c22-35 50-7 75-31 20-19 42-20 77-19V120Z"/><path class="line" d="M0 120C35 116 52 88 86 88s40 2 62-33c22-35 50-7 75-31 20-19 42-20 77-19"/></svg></div></article>
+        <article class="plane-card access-card"><i>L0</i><div class="target-icon mint-tile"><img src="assets/icon-access.png" alt=""></div><div class="plane-copy"><h3>Entrée &amp; custody</h3><p>Quotas, magic bytes, original byte-for-byte, SHA-256 et lineage des dérivés.</p><span>Livré local · infra cible</span></div></article>
+        <article class="plane-card proof-card"><i>L1</i><div class="target-icon lavender"><img src="assets/icon-proof.png" alt=""></div><div class="plane-copy"><h3>Source &amp; provenance</h3><p>C2PA local actif ; connecteur officiel, navigateur géré et attestation émetteur restent cibles.</p><span>M1.4 partiel · preuve positive cible</span></div></article>
+        <article class="plane-card compute-card"><i>L2–3</i><div class="target-icon mint"><img src="assets/icon-compute.png" alt=""></div><div class="plane-copy"><h3>Signature &amp; PDF natif</h3><p>Intégrité CMS, révisions, objets, texte, polices et ordre de peinture.</p><span>Couverture partielle active</span></div></article>
+        <article class="plane-card knowledge-card"><i>L4–5</i><div class="target-icon lavender"><img src="assets/icon-knowledge.png" alt=""></div><div class="plane-copy"><h3>Pixels, OCR &amp; sémantique</h3><p>Localisation CV, texte visible, champs typés et recalcul déterministe.</p><span>Scaffold SHADOW · cible</span></div></article>
+        <article class="plane-card decision-card"><i>L6–7</i><div class="target-icon mint"><img src="assets/icon-decision.png" alt=""></div><div class="plane-copy"><h3>Références &amp; séries</h3><p>Profils d’émetteurs, versions, règles, quasi-doublons et cohérence dossier.</p><span>Cible · données gouvernées</span></div></article>
+        <article class="plane-card observability-card"><i>L8–9</i><div class="target-icon mint"><img src="assets/icon-observability.png" alt=""></div><div class="plane-copy"><h3>Capture, fusion &amp; humain</h3><p>Navigation guidée, policy déterministe, abstention et décision analyste.</p><span>Pilote local + policy livrée</span></div><div class="observability-chart" aria-hidden="true"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path class="area" d="M0 120C35 116 52 88 86 88s40 2 62-33c22-35 50-7 75-31 20-19 42-20 77-19V120Z"/><path class="line" d="M0 120C35 116 52 88 86 88s40 2 62-33c22-35 50-7 75-31 20-19 42-20 77-19"/></svg></div></article>
       </div>
       <div class="roadmap">
-        <div class="roadmap-head"><h3>Trajectoire recommandée</h3><span>La sécurité précède l’augmentation de couverture</span></div>
+        <div class="roadmap-head"><h3>Trajectoire recommandée</h3><span>Ajouter les familles manquantes sans remplacer la preuve par un score opaque</span></div>
         <div class="roadmap-row"><b>P0</b><div><strong>Déployable en sécurité</strong><p>IAM · quarantaine · sandbox · queue durable · PostgreSQL · stockage objet · purge</p></div><span class="status gate">GATE</span></div>
-        <div class="roadmap-row"><b>P1</b><div><strong>Couverture documentaire</strong><p>OCR local · OpenCV · comparaison texte/rendu · templates émetteurs</p></div><span class="status target">CIBLE</span></div>
-        <div class="roadmap-row"><b>P2</b><div><strong>Preuves positives</strong><p>eIDAS · C2PA · connecteurs institutionnels · scellement émetteur</p></div><span class="status target">CIBLE</span></div>
-        <div class="roadmap-row"><b>P3</b><div><strong>Modèles calibrés</strong><p>Uniquement après corpus autorisé, protocole d’évaluation et supervision</p></div><span class="status experimental">EXPÉRIMENTAL</span></div>
+        <div class="roadmap-row"><b>P1</b><div><strong>Contrôles déterministes complémentaires</strong><p>qpdf · ExifTool · veraPDF · DSS/eIDAS · OCR local · règles métier</p></div><span class="status target">SOUS GATES</span></div>
+        <div class="roadmap-row"><b>P2</b><div><strong>Preuves positives et références</strong><p>Durcissement C2PA · profils d’émetteurs · connecteurs institutionnels · navigation gérée</p></div><span class="status target">CIBLE</span></div>
+        <div class="roadmap-row"><b>P3</b><div><strong>Modèle visuel propriétaire calibré</strong><p>Copy-move, collage, inpainting et retouche IA ; toujours corroboré par une autre famille</p></div><span class="status experimental">V2</span></div>
       </div>
     </section>
 
     <section class="section dark" id="proof"><div class="wrap">
-      <div class="section-head inverse"><div><p class="eyebrow">04 · Provenance et navigation guidée</p><h2>Une échelle de preuve,<br>pas une promesse binaire.</h2></div><p>La vidéo améliore la continuité observée, mais seule une source authentifiée ou une attestation signée apporte une preuve forte d’origine.</p></div>
+      <div class="section-head inverse"><div><p class="eyebrow">05 · Provenance et navigation guidée</p><h2>Une échelle de preuve,<br>pas une promesse binaire.</h2></div><p>La vidéo améliore la continuité observée, mais seule une source authentifiée ou une attestation signée apporte une preuve forte d’origine.</p></div>
       <div class="proof-ladder" id="proofLadder"></div>
       <div class="callout"><svg><use href="#alert"/></svg><div><strong>Principe non négociable</strong><p>L’agent IA peut guider, orchestrer et expliquer. Il ne fabrique aucun résultat manquant, n’interprète jamais une page comme une instruction et ne modifie pas la policy.</p></div></div>
     </div></section>
 
     <section class="section wrap limits">
-      <div><p class="eyebrow">05 · Lecture responsable</p><h2>Ce que le système dit.<br><em>Et ce qu’il ne dit pas.</em></h2></div>
-      <div class="do-dont"><article class="do"><span><svg><use href="#check"/></svg> Le système peut</span><ul><li>Conserver et vérifier les octets originaux</li><li>Localiser des faits et anomalies techniques</li><li>Afficher couverture, limites et abstention</li><li>Organiser une revue humaine traçable</li></ul></article><article class="dont"><span><svg><use href="#close"/></svg> Le système ne peut pas</span><ul><li>Certifier seul l’authenticité d’un document</li><li>Déduire la solvabilité ou refuser un crédit</li><li>Transformer l’absence d’anomalie en preuve</li><li>Utiliser un pourcentage d’authenticité non calibré</li></ul></article></div>
+      <div><p class="eyebrow">06 · Lecture responsable</p><h2>Ce que le système dit.<br><em>Et ce qu’il ne dit pas.</em></h2></div>
+      <div class="do-dont"><article class="do"><span><svg><use href="#check"/></svg> Le système peut</span><ul><li>Conserver et revérifier les octets reçus</li><li>Localiser certains overlays, ruptures de police et ajouts post-raster</li><li>Contrôler l’intégrité locale d’une signature numérique</li><li>Valider un C2PA présent et distinguer une métadonnée IA déclarative</li><li>Repérer un doublon binaire exact</li><li>Afficher couverture, limites et abstention</li></ul></article><article class="dont"><span><svg><use href="#close"/></svg> Le système ne peut pas encore</span><ul><li>Détecter fiablement une retouche GPT aplatie sans provenance</li><li>Détecter copy-move, collage ou inpainting par les pixels</li><li>Vérifier salaire, IBAN, employeur ou cohérence métier</li><li>Authentifier une source ou un émetteur sans connecteur</li><li>Transformer l’absence de C2PA ou d’anomalie en preuve d’authenticité</li></ul></article></div>
     </section>
   </main>
-  <footer><div class="wrap"><img src="assets/mozzeno-logo.svg" alt="Mozzeno"><p>Document Trust · aperçu d’architecture basé sur l’état audité du 4 septembre 2026.</p><a href="#top">Retour en haut ↑</a></div></footer>
+  <footer><div class="wrap"><img src="assets/mozzeno-logo.svg" alt="Mozzeno"><p>Document Trust M1.4 · capacités et architecture auditées au 8 septembre 2026.</p><a href="#top">Retour en haut ↑</a></div></footer>
 
   <svg class="symbols" aria-hidden="true"><defs>
     <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.8 2.8 8.2 7 10 4.2-1.8 7-5.2 7-10V6z"/><path d="m9 12 2 2 4-4"/></symbol>
@@ -113,6 +151,7 @@
     <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
     <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
   </defs></svg>
-  <script src="app.js?v=20260904-2"></script>
+  <script src="threats.js?v=20260908-1"></script>
+  <script src="app.js?v=20260908-1"></script>
 </body>
 </html>
